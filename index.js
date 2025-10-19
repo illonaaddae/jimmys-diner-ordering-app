@@ -67,6 +67,12 @@ function renderOrder() {
           `;
       total += price;
     });
+
+    checkoutSection.classList.remove("u-hidden");
+    completeBtn.classList.remove("u-hidden");
+  } else {
+    checkoutSection.classList.add("u-hidden");
+    completeBtn.classList.add("u-hidden");
   }
 
   // Updating the DOM once with all the order
@@ -74,13 +80,27 @@ function renderOrder() {
 
   // Update the total price
   document.querySelector(".total__value").textContent = `$${total}`;
-
-  // Show Checkout section and button
-  checkoutSection.classList.remove("u-hidden");
-  completeBtn.classList.remove("u-hidden");
 }
-order();
 
+function handleRemove() {
+  orderList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("remove")) {
+      const itemId = Number(e.target.dataset.id);
+
+      // Remove first occurrence
+      const itemIndex = orders.findIndex((item) => item.id === itemId);
+      if (itemIndex > -1) {
+        orders.splice(itemIndex, 1);
+      }
+
+      // Re-render
+      renderOrder();
+    }
+  });
+}
+
+order();
+handleRemove();
 function completeOrder() {
   completeBtn.addEventListener("click", () => {
     paymentModal.classList.remove("u-hidden");
@@ -91,10 +111,8 @@ function completeOrder() {
     // Get the input with id="username"
     const username = document.getElementById("username").value;
 
-
     const successText = document.querySelector(".success__text");
     successText.textContent = `Thanks, ${username}! Your order is on its way!`;
-
 
     successSection.classList.remove("u-hidden");
     paymentModal.classList.add("u-hidden");
