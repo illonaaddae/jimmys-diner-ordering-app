@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jimmy’s Diner</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Smythe&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Linking CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- HERO / HEADER -->
+      <header class="hero">
+        <img class="hero__img" src="header-img.jpg" alt="" />
+        <div class="hero__overlay"></div>
+        <div class="hero__text">
+          <h1 class="hero__title">Jimmy’s Diner</h1>
+          <p class="hero__subtitle">The best burgers and pizzas in town.</p>
+        </div>
+      </header>
+
+      <!-- MENU LIST (default state) -->
+      <main class="section section--menu" id="menuSection">
+        <ul class="list" id="menuList">
+          <!-- JS will inject <li class="list__row"> rows here -->
+          
+        </ul>
+      </main>
+
+      <!-- PRE-CHECKOUT (Your order) -->
+      <section class="section section--checkout u-hidden" id="checkoutSection">
+        <h2 class="section__heading">Your order</h2>
+        <ul class="list list--order" id="orderList">
+          <!-- JS injects selected items -->
+        </ul>
+
+        <div class="total" id="totalRow">
+          <span class="total__label">Total price:</span>
+          <span class="total__value">$0</span>
+        </div>
+      </section>
+
+      <!-- SUCCESS BANNER (order complete) -->
+      <section class="section u-hidden" id="successSection">
+        <div class="success">
+          <p class="success__text">Thanks, James! Your order is on its way!</p>
+        </div>
+      </section>
+
+      <!-- PAYMENT MODAL (hidden by default) -->
+      <div
+        class="modal u-hidden"
+        id="paymentModal"
+        aria-hidden="true"
+        role="dialog"
+      >
+        <div class="modal__card">
+          <h3 class="modal__title">Enter card details</h3>
+          <form class="form" id="paymentForm">
+            <input
+              class="input"
+              type="text"
+              placeholder="Enter your name"
+              required
+            />
+            <input
+              class="input"
+              type="text"
+              placeholder="Enter card number"
+              required
+            />
+            <input class="input" type="text" placeholder="Enter CVV" required />
+            <button type="submit" class="btn btn--primary">Pay</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- BOTTOM CTA (green bar) -->
+      <button type="button" class="cta u-hidden" id="completeBtn">
+        Complete order
+      </button>
+    </div>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
