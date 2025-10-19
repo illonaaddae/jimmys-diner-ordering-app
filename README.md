@@ -178,9 +178,9 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Illona Addae**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
+- GitHub: [@illonaaddae](https://github.com/illonaaddae)
+- LinkedIn: [Illona Addae](https://www.linkedin.com/in/illonaaddae)
+- Portfolio: [oceaniccoder.dev](https://oceaniccodes.netlify.app/)
 
 ## 🙏 Acknowledgments
 
@@ -192,4 +192,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ⭐ **Star this repository if you found it helpful!**
 
-_Built with ❤️ and JavaScript_
+_Built with ❤️ and JavaScript by Oceaniccoder_

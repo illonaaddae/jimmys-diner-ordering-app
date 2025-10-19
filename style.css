@@ -191,7 +191,7 @@ body {
   align-items: center;
 }
 .list--order .row-title {
-  font-family: "Verdana", sans-serif;
+  font-family: "Smythe", serif;
   font-size: 28px;
   font-weight: 400;
   margin-bottom: 0;
@@ -218,16 +218,17 @@ body {
   align-items: center;
   padding: 10px 0 0;
   margin: 0;
+  font-family: "Smythe", serif;
 }
 .total__label {
-  font-family: "Verdana", sans-serif;
+  font-family: "Smythe", serif;
   color: var(--text);
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
 }
 .total__value {
-  font-family: "Verdana", sans-serif;
+  font-family: "Smythe", serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 1;
@@ -263,7 +264,7 @@ body {
   text-align: center;
 }
 .success__text {
-  font-family: "Verdana", sans-serif;
+  font-family: "Smythe", serif;
   font-size: 32px;
   font-weight: 400;
   color: #065f46;

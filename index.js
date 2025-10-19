@@ -12,14 +12,6 @@ const paymentForm = document.getElementById("paymentForm");
 
 const completeBtn = document.getElementById("completeBtn");
 
-//  {
-//     name: "Pizza",
-//     ingredients: ["pepperoni", "mushrom", "mozarella"],
-//     id: 0,
-//     price: 14,
-//     emoji: "🍕",
-//   },
-
 // Render Menu List
 function defaultMenu(arr) {
   arr.forEach((menu) => {
@@ -96,7 +88,18 @@ function completeOrder() {
 
   paymentForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Pay button clicked");
+    // Get the input with id="username"
+    const username = document.getElementById("username").value;
+
+
+    const successText = document.querySelector(".success__text");
+    successText.textContent = `Thanks, ${username}! Your order is on its way!`;
+
+
+    successSection.classList.remove("u-hidden");
+    paymentModal.classList.add("u-hidden");
+    checkoutSection.classList.add("u-hidden");
+    completeBtn.classList.add("u-hidden");
   });
 }
 
