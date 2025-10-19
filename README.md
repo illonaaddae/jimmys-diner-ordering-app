@@ -12,13 +12,16 @@ Jimmy's Diner is a single-page application (SPA) that simulates a complete resta
 
 ## ✨ Features
 
-- **📱 Mobile-First Design** - Fully responsive interface optimized for mobile devices
-- **🎨 Pixel-Perfect UI** - Implemented from Figma design specifications
-- **🛒 Dynamic Shopping Cart** - Real-time order updates with add/remove functionality
-- **💰 Live Price Calculation** - Automatic total price updates
-- **💳 Payment Modal** - Interactive form with validation
-- **🎭 Smooth UX** - Intuitive user flow from menu to checkout
+- **📱 Mobile-First Design** - Fully responsive interface optimized for mobile devices (600px max-width)
+- **🎨 Pixel-Perfect UI** - Implemented from Figma design specifications with precise spacing and typography
+- **🛒 Dynamic Shopping Cart** - Add items to cart with real-time updates
+- **❌ Remove Items** - Remove individual items from cart with event delegation
+- **💰 Live Price Calculation** - Automatic total price updates as items are added/removed
+- **💳 Payment Modal** - Interactive form with username input and validation
+- **👤 Personalized Success Message** - Displays user's name in order confirmation
+- **🎭 Smooth State Management** - Auto-hide/show sections based on cart status
 - **♿ Accessible** - Semantic HTML and ARIA labels for screen readers
+- **📦 ES6 Modules** - Clean code organization with import/export
 
 ## 🚀 Technologies Used
 
@@ -43,21 +46,41 @@ Mobile-Ordering-App/
 
 ### Menu Rendering
 
-- Dynamic menu generation from data array
-- ES6 destructuring and template literals
-- Efficient DOM manipulation
+- Dynamic menu generation from data array using `forEach`
+- ES6 destructuring and template literals for clean code
+- Efficient DOM manipulation with `innerHTML`
+- Data attributes (`data-id`) for item identification
 
 ### Order Management
 
-- Event delegation for scalable click handling
-- State management with JavaScript arrays
-- Real-time cart updates
+- **Add to Cart**: Click `+` button to add items to order
+- **Remove from Cart**: Click "remove" to delete individual items
+- Event delegation pattern for scalable click handling
+- State management with JavaScript arrays (`orders`)
+- Conditional rendering based on cart state
+- Real-time cart updates with `renderOrder()` function
+
+### Price Calculation
+
+- Dynamic total calculation using array iteration
+- Automatic updates when items are added or removed
+- Display formatted prices with `$` symbol
 
 ### Payment Flow
 
-- Modal system with form validation
+- Modal system with overlay (backdrop)
+- Form with username, card number, and CVV inputs
 - Form submission handling with `preventDefault()`
-- Success state management
+- Username captured from form input
+- Success state with personalized greeting
+
+### UI State Management
+
+- Auto-show checkout section when items added
+- Auto-hide checkout section when cart is empty
+- Toggle payment modal on "Complete order" click
+- Display success message after payment
+- Hide all sections except success after payment completion
 
 ## 💻 Installation & Setup
 
@@ -119,10 +142,25 @@ _Order confirmation message_
 ### Event Delegation Pattern
 
 ```javascript
+// Add to cart
 menuList.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-plus")) {
     const menuId = Number(e.target.dataset.id);
-    // Add to cart logic
+    const orderItem = menuArray.find((item) => item.id === menuId);
+    orders.push(orderItem);
+    renderOrder();
+  }
+});
+
+// Remove from cart
+orderList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove")) {
+    const itemId = Number(e.target.dataset.id);
+    const itemIndex = orders.findIndex((item) => item.id === itemId);
+    if (itemIndex > -1) {
+      orders.splice(itemIndex, 1);
+    }
+    renderOrder();
   }
 });
 ```
@@ -130,25 +168,49 @@ menuList.addEventListener("click", (e) => {
 ### Dynamic Total Calculation
 
 ```javascript
-const total = orders.reduce((sum, item) => sum + item.price, 0);
+let total = 0;
+orders.forEach((order) => {
+  total += order.price;
+});
+document.querySelector(".total__value").textContent = `$${total}`;
 ```
 
-### Data-Driven Rendering
+### Conditional Rendering & State Management
 
 ```javascript
-orders.forEach((order) => {
-  orderHTML += `<li class="list__row">...</li>`;
+if (orders.length > 0) {
+  // Build order HTML
+  checkoutSection.classList.remove("u-hidden");
+  completeBtn.classList.remove("u-hidden");
+} else {
+  checkoutSection.classList.add("u-hidden");
+  completeBtn.classList.add("u-hidden");
+}
+```
+
+### Personalized Success Message
+
+```javascript
+paymentForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const username = document.getElementById("username").value;
+  successText.textContent = `Thanks, ${username}! Your order is on its way!`;
 });
-orderList.innerHTML = orderHTML;
 ```
 
 ## 🎓 Learning Outcomes
 
-- Mastered ES6+ features (modules, destructuring, arrow functions)
-- Implemented event delegation for performance optimization
-- Built responsive layouts with modern CSS
-- Practiced state management in vanilla JavaScript
-- Developed pixel-perfect UI from design mockups
+- Mastered **ES6+ features** (modules, destructuring, arrow functions, template literals)
+- Implemented **event delegation** for performance optimization and scalability
+- Built **responsive layouts** with modern CSS (Flexbox, custom properties)
+- Practiced **state management** in vanilla JavaScript with arrays
+- Developed **pixel-perfect UI** from Figma design mockups
+- Learned **DOM manipulation** best practices (minimize reflows)
+- Implemented **form handling** with validation and preventDefault
+- Used **data attributes** for element identification
+- Practiced **conditional rendering** based on application state
+- Applied **array methods** (forEach, find, findIndex, splice)
+- Structured code with **modular functions** for maintainability
 
 ## 🚧 Future Enhancements
 
