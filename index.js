@@ -118,7 +118,27 @@ function completeOrder() {
     paymentModal.classList.add("u-hidden");
     checkoutSection.classList.add("u-hidden");
     completeBtn.classList.add("u-hidden");
+
+    // Reset the app after 3 seconds
+    setTimeout(() => {
+      resetApp();
+    }, 10000);
   });
+}
+
+// Reset the app to initial state
+function resetApp() {
+  // Clear orders array
+  orders = [];
+
+  // Hide success section
+  successSection.classList.add("u-hidden");
+
+  // Reset form
+  paymentForm.reset();
+
+  // Re-render order (will hide checkout section since orders is empty)
+  renderOrder();
 }
 
 completeOrder();
