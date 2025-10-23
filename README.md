@@ -8,7 +8,7 @@ A sleek, mobile-first restaurant ordering application built with vanilla JavaScr
 
 Jimmy's Diner is a single-page application (SPA) that simulates a complete restaurant ordering experience. Users can browse menu items, add them to their cart, review their order, and complete a mock payment process.
 
-**Live Demo:** [View Live Project](#) _(Add your deployed link here)_
+**Live Demo:** [View Live Project](https://jimmys-diner-ordering.netlify.app/)
 
 ## ✨ Features
 
@@ -119,22 +119,22 @@ Mobile-Ordering-App/
 
 ### Menu View
 
-![Menu View](./screenshots/menu-view.png)
+![Menu View](imgs/shot-1.png)
 _Browse available items with detailed descriptions_
 
 ### Order Summary
 
-![Order Summary](./screenshots/order-summary.png)
+![Order Summary](imgs/shot-2.png)
 _Review your selections before checkout_
 
 ### Payment Modal
 
-![Payment Modal](./screenshots/payment-modal.png)
+![Payment Modal](imgs/shot-3.png)
 _Secure payment form interface_
 
 ### Success State
 
-![Success Message](./screenshots/success-state.png)
+![Success Message](imgs/shot-4.png)
 _Order confirmation message_
 
 ## 🔑 Code Highlights
